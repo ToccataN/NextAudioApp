@@ -28,3 +28,11 @@ export const subOscillator = () =>{
 		type: actionType.SUB_OSC
 	}
 }
+
+export const changeLFO = (value, index) => {
+  return {
+  	type: actionType.CHANGE_LFO,
+  	value,
+  	index
+  }
+}

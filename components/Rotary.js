@@ -8,6 +8,7 @@ class Rotary extends React.Component{
 
   	this.state={
   		value: this.props.value,
+  		index: this.props.index,
   		function: this.props.onChange.bind(this),
         maxVal: Math.abs(this.props.max - this.props.min)/5
   	}
@@ -17,14 +18,19 @@ class Rotary extends React.Component{
 
   }
   
-  handleOnChange(val){
+  handleOnChange(val, index = null){
   	 
   	 let distance = Math.abs(val - this.state.value),
   	     max = this.state.maxVal 
 
      if(distance > max){
      	return;
-     } else {
+     } else if(this.props.index != null){
+     	this.setState({
+     		value: val
+     	}, this.state.function(val, this.props.index))
+
+     }else {
      	this.setState({
      		value: val
      	}, this.state.function(val));
