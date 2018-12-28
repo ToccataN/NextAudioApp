@@ -6,7 +6,10 @@ const headerStyle ={
 
 const Header = (props) => (
     <div style={headerStyle} className={"app-header"}>
-       <h1>Next Additive Synthesizer</h1>
+      <div className={"center-header"}>
+        <h1>Next Additive Synthesizer</h1>
+        <h5><a href="https://github.com/ToccataN/NextAudioApp">Github Repo</a></h5>
+      </div>
     </div>
 )
 	

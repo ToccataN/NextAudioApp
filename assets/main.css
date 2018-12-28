@@ -10,6 +10,18 @@ h6{
 
 .app-header{
 	color: #9999ff;
+
+}
+
+.center-header h1{
+	margin-bottom: 10px;
+}
+
+.center-header h5, .center-header a{
+	text-align: center;
+	text-decoration: none;
+	margin-top: 10px;
+	margin-bottom: 10px;
 }
 
 button {
