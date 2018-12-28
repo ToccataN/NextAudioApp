@@ -6,7 +6,7 @@ const headerStyle ={
 
 const Header = (props) => (
     <div style={headerStyle} className={"app-header"}>
-       <h1>Next JS Audio App</h1>
+       <h1>Next Additive Synthesizer</h1>
     </div>
 )
 	

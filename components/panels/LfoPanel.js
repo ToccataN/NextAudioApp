@@ -23,7 +23,7 @@ class LfoPanel extends React.Component{
 
   render(){
   	return(
-      <div className={"ui-panel"}>
+      <div className={"lfo-panel ui-panel"}>
         
           <div className={"selector"}>
              <select value={this.state.type} onChange={(val) => this.setState({ type: val.target.value}, this.props.changeLFO(val.target.value, 1)) }>

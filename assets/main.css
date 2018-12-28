@@ -3,6 +3,11 @@ body {
 	color: #d3d3d3;
 }
 
+h6{
+	margin-top: 0;
+	margin-bottom:  0;
+}
+
 .app-header{
 	color: #9999ff;
 }
@@ -109,8 +114,12 @@ i {
 }
 
 /* LFO UI  */
+.lfo-panel{
+  min-height: 150px;
+}
+
 .selector{	
-	margin: 0 auto;
+	margin: 5px auto;
 	margin-left: 5px;
 	margin-right: 5px;
 }
@@ -124,6 +133,7 @@ i {
 .lfo-knobs{
 	display: flex;
 	flex-flow: row;
+	min-height: 116px;
 }
 
 .lfo-knobs > * {
