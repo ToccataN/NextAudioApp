@@ -7,9 +7,7 @@ class AudioEngine extends React.Component {
   		gain: this.props.gain,
   		freq: this.props.freq,
   		oscArray: [],
-  		lfoType: this.props.lfoType,
-  		lfoRate: this.props.lfoRate,
-  		lfoFreq: this.props.lfoFreq
+  		LFOBj: this.props.lfo
     }
   }
 
@@ -23,17 +21,26 @@ class AudioEngine extends React.Component {
         this.oscillator1.frequency.value = this.state.freq;
         this.oscillator1.start(0);
         this.lfo = this.createLFO(this.gainNode);
+   
+        if(this.props.oscArray > 1){
+          var num = this.props.oscArray;
+          this.resetOscillators(num);
+          this.adjustOscillatorGain(this.state.gain);
+          this.adjustOscillatorFrequency();
+        }
     
   }
 
   componentDidUpdate(prevProps){
   	if (this.props.gain != prevProps.gain){
-        let oscArray = this.adjustOscillatorGain();
+  		var gain = this.props.gain,
+            oscArray = this.adjustOscillatorGain(gain);
   		this.setState({
-    	  gain: this.props.gain,
+    	  gain: gain,
     	  oscArray: oscArray
         }, () => {
-          this.gainNode.gain.value = this.state.gain
+          this.gainNode.gain.value = this.state.gain;
+          this.lfo['gain'].gain.value = this.state.gain;
         })    
   	}
 
@@ -47,18 +54,17 @@ class AudioEngine extends React.Component {
   		})
   	}
 
-  	if(this.props.lfoRate != prevProps.lfoRate){
-  		console.log(this.state.lfoRate)
+  	if(this.props.lfo != prevProps.lfo){
   		this.setState({
-  			lfoRate: this.props.lfoRate
+  			LFOBj: this.props.lfo
   		}, () => {
-  			this.lfo['osc'].frequency.value = this.state.lfoRate
+  			this.updateLFO(this.state.LFOBj)
   		});
   	}
 
   	if(this.props.oscArray != prevProps.oscArray){
       if(this.props.oscArray > this.state.oscArray.length){
-        this.addOscillator();
+        this.addOscillator(this.props.oscArray);
       } else {
       	this.state.oscArray[this.props.oscArray - 1][0].stop();
       	this.state.oscArray.splice(this.props.oscArray-1, 1)
@@ -80,26 +86,45 @@ class AudioEngine extends React.Component {
     
   }
  
+  componentWillUnmount(){
+  	console.log(this.state.oscArray);
+  	this.AudioContext.close();
 
-  addOscillator(){
+  	this.setState({
+  		oscArray: []
+  	},() =>{  } )
+  }
+
+  addOscillator(int){
   	let osc = this.AudioContext.createOscillator(),
   	    oscGainNode = this.AudioContext.createGain();
 
+
+    
   	osc.connect(oscGainNode);
-  	oscGainNode.connect(this.AudioContext.destination);
+  	oscGainNode.connect(this.gainNode);
   	osc.start(0);
-  	oscGainNode.gain.value = Math.pow(this.state.gain, (this.props.oscArray-1)/2);
-  	osc.frequency.value = this.state.freq * Math.pow(2, 1 + .5 + ((this.props.oscArray - 1)/2) )
+  	oscGainNode.gain.value = Math.pow(this.state.gain, (int-1)/2);
+  	osc.frequency.value = this.state.freq * Math.pow(2, 1 + .5 + ((int - 1)/2) );
+  	console.log("oscs: " + oscGainNode.gain.value, "stuff: " + this.state.gain)
   	this.setState({
   		oscArray: [...this.state.oscArray, [osc, oscGainNode]]
-  	});
+  	}, ()=>{ console.log(this.state.oscArray.length) });
 
   }
 
-  adjustOscillatorGain(){
+  resetOscillators(num){ 	
+    for(let i = 2; i <= num ; i++){
+    	setTimeout(()=> { this.addOscillator(i); }, 100)
+    	
+    }
+    
+  }
+
+  adjustOscillatorGain(gain){
   	let oscs = this.state.oscArray;
   	for(let i = 0; i < oscs.length; i++ ){
-      oscs[i][1].gain.value = Math.pow(this.props.gain, (i+1)/2);
+      oscs[i][1].gain.value = Math.pow(gain, (i+1)/2);
   	}
   	return oscs;
   }
@@ -112,18 +137,19 @@ class AudioEngine extends React.Component {
   	return oscs;
   }
 
-  createLFO(osc){
-  	var lfo = this.AudioContext.createOscillator(),
+  createLFO(gainNode){
+  	let lfo = this.AudioContext.createOscillator(),
   	    lfoGain = this.AudioContext.createGain(),
-  	    type = this.state.lfoType,
-  	    rate = this.state.lfoRate,
-  	    freq = this.state.lfoFreq;
+  	    lfoType = this.state.LFOBj[1],
+  	    lfoRate = this.state.LFOBj[2],
+  	    lfoFreq = this.state.LFOBj[3];
 
+        lfoGain.gain.value = this.state.gain;
   	    lfo.connect(lfoGain);
-  	    lfo.type = type;
-  	    lfo.frequency.value = rate;
-        lfoGain.gain.value = freq;
-        lfoGain.connect(osc.gain)
+  	    lfo.type = lfoType;
+  	    lfo.frequency.value = lfoRate;
+        lfo.detune.value = lfoFreq;
+        lfoGain.connect(gainNode.gain)
         lfo.start(0);  
    
         return {
@@ -138,7 +164,7 @@ class AudioEngine extends React.Component {
   	
   	this.lfo['osc'].type = params[1];
   	this.lfo['osc'].frequency.value = params[2];
-  	this.lfo['gain'].gain.value = params[3];
+  	this.lfo['osc'].detune.value = params[3];
  
   }
 

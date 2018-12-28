@@ -1,5 +1,6 @@
 import { createStore } from 'redux'
 import * as actions from './actions'
+import update from 'react-addons-update'
 
 const initialState = {
 	keyOn: false,
@@ -49,10 +50,12 @@ export const reducer = (state = initialState, action) =>{
           	});
           }
         case actionType.CHANGE_LFO:
-          let array = arrayMutate(state.LFObj, action.index, action.value)
-          return Object.assign({}, state, {
-          	LFObj: array
-          })
+          let index = action.index, value = action.value;
+          return update(state,{
+          	LFObj : {
+          		[index]: {$set: value}
+          	}
+          });
 
 		default: return state;
 	}

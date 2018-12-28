@@ -18,7 +18,7 @@ class MainPanel extends React.Component{
  
   render(){
   	return(
-      <div style={gainStyle} className={"main-panel"}>
+      <div style={gainStyle} className={"main-panel ui-panel"}>
         <button onClick={this.props.keyToggle}> {this.props.keyOn ? "Key Off" : "Key On"} </button>       
           <Rotary value={this.props.masterGain} onChange={this.props.changeMasterGain} min={0} max={.2} 
            unlockDistance={25} name={"Gain"} /> 

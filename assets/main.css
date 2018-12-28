@@ -3,6 +3,10 @@ body {
 	color: #d3d3d3;
 }
 
+.app-header{
+	color: #9999ff;
+}
+
 button {
 	box-shadow: 1px 1px 1px 1px rgba(150,50, 50, 0.5);
 }
@@ -20,9 +24,10 @@ button:focus{
 	padding: 5%;
 }
 
-.main-layout > *{
+.ui-panel{
 	margin-right: 10px;
 	border-radius: 3%;
+	margin-bottom: 5px;
 	border: 1px solid #989898;
 	padding: 1%;
 }
@@ -32,7 +37,7 @@ button:focus{
   
 }
 
-.main-panel button{
+.ui-panel button{
 	margin: 0 auto;
 	width: 75px;
 	display: inline-block;
@@ -102,3 +107,32 @@ i {
 	margin-bottom: 10px;
 	margin-left: 20px;
 }
+
+/* LFO UI  */
+.selector{	
+	margin: 0 auto;
+	margin-left: 5px;
+	margin-right: 5px;
+}
+
+.selector select{
+	width: 100%;
+	background: black;
+	color: #9999ff;
+}
+
+.lfo-knobs{
+	display: flex;
+	flex-flow: row;
+}
+
+.lfo-knobs > * {
+	margin: 0 auto;
+}
+
+.lfo-knobs h6{
+	max-width: 45px;
+}
+
+
+

@@ -17,7 +17,7 @@ class Oscillator extends React.Component {
   render(){
     return(
 
-      <div style={oscStyle} className={"osc-panel"}>
+      <div style={oscStyle} className={"osc-panel ui-panel"}>
 
         <div className={"osc-dec-inc"}>
            <button onClick={this.props.addOsc}><i className={"arrow-up"}> </i></button>

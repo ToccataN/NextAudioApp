@@ -16,6 +16,7 @@
     "@zeit/next-css": "^1.0.1",
     "next": "^7.0.2",
     "react": "^16.6.3",
+    "react-addons-update": "^15.6.2",
     "react-dom": "^16.6.3",
     "react-redux": "^6.0.0",
     "react-rotary-knob": "^1.1.3",

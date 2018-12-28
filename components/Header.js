@@ -5,7 +5,7 @@ const headerStyle ={
 }
 
 const Header = (props) => (
-    <div style={headerStyle}>
+    <div style={headerStyle} className={"app-header"}>
        <h1>Next JS Audio App</h1>
     </div>
 )

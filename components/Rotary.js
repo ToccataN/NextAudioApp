@@ -56,7 +56,7 @@ class Rotary extends React.Component{
       <div className={"rotary-knob"} style={divStyle}>
         <Knob value={this.state.value} skin={skin1} style={rotateStyle}
           preciseMode={false} {...properties} onChange={this.handleOnChange}  />
-          <h6 style={{marginTop: 10, marginBottom: 10}}> {this.props.name}: {Math.round(this.state.value*100)/100} </h6>
+          <h6 style={{marginTop: 10, marginBottom: 10}}> {this.props.name}: {Math.round(this.state.value*100)/100}</h6>
       </div>
     )
     	

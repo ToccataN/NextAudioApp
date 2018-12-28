@@ -1,5 +1,6 @@
 import React from 'react'
 import Rotary from '../Rotary'
+import '../../assets/main.css'
 
 const LFOStyle = {
 	display: 'inline',
@@ -19,25 +20,23 @@ class LfoPanel extends React.Component{
   	}
   }
 
+
   render(){
   	return(
-      <div>
-        <div className={"selector-display"}>
+      <div className={"ui-panel"}>
+        
           <div className={"selector"}>
-             <select value={this.state.type} onChange={(val) => this.setState({ type: val.target.value}, this.state.function(val.target.value, 1)) }>
+             <select value={this.state.type} onChange={(val) => this.setState({ type: val.target.value}, this.props.changeLFO(val.target.value, 1)) }>
               {this.state.options.map((wave) => <option key={wave} value={wave}>{wave}</option> )}
             </select>
           </div>
-          <div className={"selector-window"}>
-
-          </div>
-        </div>
+       
         
-        <div style={{display: 'flex', flexFlow: 'row'}}>
-          <Rotary style={LFORotaryStyle} value={this.props.lfoRate} index={2} onChange={this.props.onChange} name={"Rate"}
-          min={0} max={60}/>
-          <Rotary style={LFORotaryStyle} value={this.props.lfoFreq} index={3} onChange={this.props.onChange} name={"Freq"}
-          min={0} max={10000}/>
+        <div className={"lfo-knobs"}>
+          <Rotary style={LFORotaryStyle} value={this.props.lfoRate} index={2} onChange={this.props.changeLFO} name={"Rate"}
+          min={0} max={60} unlockDistance={25}/>
+          <Rotary style={LFORotaryStyle} value={this.props.lfoFreq} index={3} onChange={this.props.changeLFO} name={"Freq"}
+          min={0} max={10000} unlockDistance={25}/>
         </div>
       </div>
   	)
