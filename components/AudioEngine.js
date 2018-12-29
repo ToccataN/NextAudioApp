@@ -79,7 +79,7 @@ class AudioEngine extends React.Component {
       	this.state.oscArray.splice(this.props.oscArray-1, 1)
       	this.setState({
       		oscArray: this.state.oscArray
-      	}, console.log("oscs: " + this.state.oscArray));
+      	});
       }
 
   	}

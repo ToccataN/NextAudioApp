@@ -17,12 +17,9 @@ class WavePanel extends React.Component{
       <div className={"wave-panel ui-panel"}>
         <Rotary style={WaveRotaryStyle} value={this.props.phase} onChange={this.props.changePhase}
            min={0} max={0.5} name={"Phase"} />
-
-      </div>
-    
+      </div> 
   	)
   }
-
 
 }
 

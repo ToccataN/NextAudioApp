@@ -24,7 +24,6 @@ class MainPanel extends React.Component{
            unlockDistance={25} name={"Gain"} /> 
           <Rotary value={this.props.baseFrequency} min={20} max={1200} onChange={this.props.changeBaseFrequency} 
            unlockDistance={25} name={"Frequency"}/> 
-
       </div>
   	)
   }

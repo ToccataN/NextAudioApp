@@ -46,7 +46,7 @@ export const reducer = (state = initialState, action) =>{
           	return Object.assign({}, state, {
           	  oscArray: state.oscArray + 1
             });
-          }   
+          } 
         case actionType.SUB_OSC:
           if(state.oscArray > 1){
           	return Object.assign({}, state,{

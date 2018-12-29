@@ -11,8 +11,6 @@ const mainLayoutStyle ={
 	flexFlow: 'row'
 }
 
-
-
 class MainLayout extends React.Component{
 
   constructor(props){
@@ -22,12 +20,6 @@ class MainLayout extends React.Component{
   	}
 
   }
-
-  componentDidUpdate(prevProps){
-  	
-  }
-
-  
 
   render(){
    if(!this.props.keyOn){
@@ -46,8 +38,7 @@ class MainLayout extends React.Component{
           <div>
             <WavePanel phase={this.props.phase} changePhase={this.props.changePhase} />
           </div>
-         </div>
-        
+         </div>     
       </div>
      )
    }else {
@@ -68,9 +59,7 @@ class MainLayout extends React.Component{
           <div>
             <WavePanel phase={this.props.phase} changePhase={this.props.changePhase} />
           </div>
-
-         </div>
-        
+         </div>   
       </div>     
   	)
    }

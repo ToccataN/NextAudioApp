@@ -20,18 +20,14 @@ class LfoPanel extends React.Component{
   	}
   }
 
-
   render(){
   	return(
-      <div className={"lfo-panel ui-panel"}>
-        
-          <div className={"selector"}>
-             <select value={this.state.type} onChange={(val) => this.setState({ type: val.target.value}, this.props.changeLFO(val.target.value, 1)) }>
-              {this.state.options.map((wave) => <option key={wave} value={wave}>{wave}</option> )}
-            </select>
-          </div>
-       
-        
+      <div className={"lfo-panel ui-panel"}>   
+        <div className={"selector"}>
+          <select value={this.state.type} onChange={(val) => this.setState({ type: val.target.value}, this.props.changeLFO(val.target.value, 1)) }>
+            {this.state.options.map((wave) => <option key={wave} value={wave}>{wave}</option> )}
+          </select>
+          </div>      
         <div className={"lfo-knobs"}>
           <Rotary style={LFORotaryStyle} value={this.props.lfoRate} index={2} onChange={this.props.changeLFO} name={"Rate"}
           min={0} max={60} unlockDistance={25}/>
