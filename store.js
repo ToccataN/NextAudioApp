@@ -42,9 +42,11 @@ export const reducer = (state = initialState, action) =>{
           	masterFreq: action.value
           });
         case actionType.ADD_OSC:
-          return Object.assign({}, state, {
-          	oscArray: state.oscArray + 1
-          });
+          if(state.oscArray < 10){
+          	return Object.assign({}, state, {
+          	  oscArray: state.oscArray + 1
+            });
+          }   
         case actionType.SUB_OSC:
           if(state.oscArray > 1){
           	return Object.assign({}, state,{

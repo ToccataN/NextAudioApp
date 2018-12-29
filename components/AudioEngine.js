@@ -193,7 +193,6 @@ class AudioEngine extends React.Component {
         let shift = 2 * Math.PI * value * Math.pow(i, .2); 
         this.realPhase[i] = a1 * Math.cos(shift) - b1 * Math.sin(shift);
         this.imagPhase[i] = a1 * Math.sin(shift) + b1 * Math.cos(shift);
-        console.log(this.realPhase + " " + this.imagPhase)
         let wt = this.AudioContext.createPeriodicWave(this.realPhase, this.imagPhase);
         oscs[i-1][0].setPeriodicWave(wt);
       }    
