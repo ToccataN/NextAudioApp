@@ -12,8 +12,8 @@ const Index = (props) =>(
 )
 
 function mapStateToProps (state) {
-  const { keyOn, masterGain, masterFreq, oscArray, LFObj } = state
-  return { keyOn, masterGain, masterFreq, oscArray, LFObj }
+  const { keyOn, masterGain, masterFreq, oscArray, LFObj, phase } = state
+  return { keyOn, masterGain, masterFreq, oscArray, LFObj, phase }
 }
 
 const mapDispatchToProps = (dispatch) => {
@@ -35,6 +35,9 @@ const mapDispatchToProps = (dispatch) => {
     },
     changeLFO: (value, index) => {
     	dispatch(actions.changeLFO(value, index));
+    },
+    changePhase: (value) => {
+    	dispatch(actions.changePhase(value));
     }
 
   }

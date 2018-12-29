@@ -70,8 +70,10 @@ button:focus{
 	display: inline-block;
 	align-self: flex-start;
 	max-height: 250px;
+	padding-top: 10px;
 	padding-right: 5px;
 	padding-left: 5px;
+	margin-bottom: 5px;
 }
 
 .osc-dec-inc{
@@ -128,6 +130,7 @@ i {
 /* LFO UI  */
 .lfo-panel{
   min-height: 150px;
+  flex-grow: 1;
 }
 
 .selector{	
@@ -155,6 +158,24 @@ i {
 .lfo-knobs h6{
 	max-width: 45px;
 }
+
+/* Wave Panel */
+.wave-panel {
+	width: 300px;
+	align-items: flex-start;
+	bottom: 0px;
+}
+
+.wave-panel .rotary-knob{
+	margin-top: 0 !important;
+}
+
+
+
+
+
+
+
 
 
 

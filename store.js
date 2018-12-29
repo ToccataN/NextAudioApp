@@ -7,7 +7,8 @@ const initialState = {
 	masterGain: 0.01,
 	masterFreq: 440,
 	oscArray: 1,
-	LFObj: [0, "sine", 0.0, 0.0] 
+	LFObj: [0, "sine", 0.0, 0.0],
+	phase: 0.0 
 }
 
 var arrayMutate = function(arr, index, value){
@@ -21,7 +22,8 @@ export const actionType = {
   CHANGE_FREQ: 'CHANGE_FREQ',
   ADD_OSC: 'ADD_OSC',
   SUB_OSC: 'SUB_OSC',
-  CHANGE_LFO: 'CHANGE_LFO'
+  CHANGE_LFO: 'CHANGE_LFO',
+  CHANGE_PHASE: 'CHANGE_PHASE'
 
 }
 
@@ -56,7 +58,10 @@ export const reducer = (state = initialState, action) =>{
           		[index]: {$set: value}
           	}
           });
-
+        case actionType.CHANGE_PHASE:
+          return Object.assign({}, state, {
+          	phase: action.value
+          });
 		default: return state;
 	}
 }

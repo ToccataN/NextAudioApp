@@ -7,7 +7,8 @@ class AudioEngine extends React.Component {
   		gain: this.props.gain,
   		freq: this.props.freq,
   		oscArray: [],
-  		LFOBj: this.props.lfo
+  		LFOBj: this.props.lfo,
+  		phase: this.props.phase
     }
   }
 
@@ -21,12 +22,20 @@ class AudioEngine extends React.Component {
         this.oscillator1.frequency.value = this.state.freq;
         this.oscillator1.start(0);
         this.lfo = this.createLFO(this.gainNode);
+        this.realPhase = new Float32Array(32);
+        this.imagPhase = new Float32Array(32);
+        
+        
    
         if(this.props.oscArray > 1){
           var num = this.props.oscArray;
           this.resetOscillators(num);
           this.adjustOscillatorGain(this.state.gain);
           this.adjustOscillatorFrequency();
+        }
+
+        if(this.props.phase != 0){
+        	this.phaseAdjustment(this.props.phase);
         }
     
   }
@@ -83,6 +92,12 @@ class AudioEngine extends React.Component {
 
     	}
     }
+
+    if(this.props.phase != prevProps.phase){
+      this.setState({
+      	phase: this.props.phase
+      }, this.phaseAdjustment(this.state.phase));
+    }
     
   }
  
@@ -104,12 +119,12 @@ class AudioEngine extends React.Component {
   	osc.connect(oscGainNode);
   	oscGainNode.connect(this.gainNode);
   	osc.start(0);
-  	oscGainNode.gain.value = Math.pow(this.state.gain, (int-1)/2);
+  	oscGainNode.gain.value = Math.pow(this.state.gain, (int-2.18)/2);
   	osc.frequency.value = this.state.freq * Math.pow(2, 1 + .5 + ((int - 1)/2) );
-  	console.log("oscs: " + oscGainNode.gain.value, "stuff: " + this.state.gain)
+  	
   	this.setState({
   		oscArray: [...this.state.oscArray, [osc, oscGainNode]]
-  	}, ()=>{ console.log(this.state.oscArray.length) });
+  	}, ()=>{ this.phaseAdjustment(this.state.phase) });
 
   }
 
@@ -166,6 +181,24 @@ class AudioEngine extends React.Component {
   	this.lfo['osc'].frequency.value = params[2];
   	this.lfo['osc'].detune.value = params[3];
  
+  }
+
+  phaseAdjustment(value){
+    let a1 = 0.0;
+    let b1 = 1.0;
+    let oscs = this.state.oscArray;
+
+    if(oscs.length != 0){
+      for (let i = 1 ; i <= oscs.length; i++){
+        let shift = 2 * Math.PI * value * Math.pow(i, .2); 
+        this.realPhase[i] = a1 * Math.cos(shift) - b1 * Math.sin(shift);
+        this.imagPhase[i] = a1 * Math.sin(shift) + b1 * Math.cos(shift);
+        console.log(this.realPhase + " " + this.imagPhase)
+        let wt = this.AudioContext.createPeriodicWave(this.realPhase, this.imagPhase);
+        oscs[i-1][0].setPeriodicWave(wt);
+      }    
+    }
+  
   }
 
   render(){

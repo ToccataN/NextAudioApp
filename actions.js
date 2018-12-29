@@ -36,3 +36,10 @@ export const changeLFO = (value, index) => {
   	index
   }
 }
+
+export const changePhase = (value) =>{
+	return {
+		type: actionType.CHANGE_PHASE,
+		value
+	}
+}
