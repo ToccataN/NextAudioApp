@@ -31,7 +31,6 @@ class SinePanel extends React.Component{
 		let num = this.numArray(xData),
 		    array = [];
 		array = d3.range(num).map((d) => [d , ( (d == 0 || d == parseInt(num) ) ? Math.sin(yData )/2 : Math.sin((d % 2 ) * yData) ) ])
-		console.log( num, array)
 		return array;
 	}
 
@@ -79,9 +78,7 @@ class SinePanel extends React.Component{
           <div className={"ui-panel sine-panel"}>
             <div id={"oscillator"}>
                
-               
             </div>
-
           </div>
      
     	)
