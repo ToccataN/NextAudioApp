@@ -102,20 +102,16 @@ class AudioEngine extends React.Component {
   }
  
   componentWillUnmount(){
-  	console.log(this.state.oscArray);
   	this.AudioContext.close();
-
   	this.setState({
   		oscArray: []
-  	},() =>{  } )
+  	})
   }
 
   addOscillator(int){
   	let osc = this.AudioContext.createOscillator(),
   	    oscGainNode = this.AudioContext.createGain();
-
-
-    
+  
   	osc.connect(oscGainNode);
   	oscGainNode.connect(this.gainNode);
   	osc.start(0);

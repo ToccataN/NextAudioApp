@@ -5,6 +5,7 @@ import MainPanel from './panels/MainPanel'
 import Oscillator from './panels/Oscillator'
 import LfoPanel from './panels/LfoPanel'
 import WavePanel from './panels/WavePanel'
+import SinePanel from './panels/SinePanel'
 
 const mainLayoutStyle ={
 	display: 'flex',
@@ -36,6 +37,7 @@ class MainLayout extends React.Component{
              lfoType={this.props.LFObj[1]} />
           </div>
           <div>
+            <SinePanel xData={this.props.masterFreq} yData={this.props.masterGain} />
             <WavePanel phase={this.props.phase} changePhase={this.props.changePhase} />
           </div>
          </div>     
@@ -57,6 +59,7 @@ class MainLayout extends React.Component{
              lfoType={this.props.LFObj[1]} />
           </div>
           <div>
+            <SinePanel xData={this.props.masterFreq} yData={this.props.masterGain}/>
             <WavePanel phase={this.props.phase} changePhase={this.props.changePhase} />
           </div>
          </div>   

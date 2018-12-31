@@ -163,6 +163,9 @@ i {
 .wave-panel {
 	width: 300px;
 	align-items: flex-start;
+	align-self: flex-end;
+	margin: 10px auto;
+	margin-bottom: 5px;
 	bottom: 0px;
 }
 
@@ -170,6 +173,20 @@ i {
 	margin-top: 0 !important;
 }
 
+
+.sine-panel{
+	min-width:300px;
+	min-height: 175px;
+	margin: 0 auto;
+	padding: 5px 5px;
+	flex-grow: 1;
+}
+
+#oscillator svg {
+	background-color: black;
+	border-radius: 15px;
+	flex-grow: 1;
+}
 
 
 

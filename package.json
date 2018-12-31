@@ -15,6 +15,7 @@
   "description": "",
   "dependencies": {
     "@zeit/next-css": "^1.0.1",
+    "d3": "^5.7.0",
     "next": "^7.0.2",
     "react": "^16.6.3",
     "react-addons-update": "^15.6.2",
