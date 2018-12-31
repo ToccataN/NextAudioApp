@@ -69,10 +69,8 @@ class SinePanel extends React.Component{
     		}, () => {this.computeLine()})
     	}
     }
-    
-
+   
     render(){
-    	
 
     	return(
           <div className={"ui-panel sine-panel"}>
