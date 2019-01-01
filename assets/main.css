@@ -39,7 +39,15 @@ button:focus{
 .main-layout{
 	background-color: #212121;
 	padding: 5%;
+	display: flex;
 }
+
+.main-panel{
+  	display: flex;
+  	flex-flow: column;
+  	width: 150px;
+  	justify-content: center;
+  }
 
 .ui-panel{
 	margin-right: 10px;
@@ -49,17 +57,17 @@ button:focus{
 	padding: 1%;
 }
 
-.main-panel{
-  
-  
-}
-
 .ui-panel button{
 	margin: 0 auto;
 	width: 75px;
 	display: inline-block;
 	padding: 1%;
 	background-color: #767698;
+}
+
+.second-panel{
+	display: flex;
+	flex-flow: column;
 }
 
 .rotary-knob> *{
@@ -188,7 +196,85 @@ i {
 	flex-grow: 1;
 }
 
+@media all and (max-width: 500px){
+  
+  .center-header h1 {
+  	text-align: center
+  }
 
+  .main-layout{
+  	flex-flow:column;
+  }
+
+  .ui-panel{
+  	margin-right: 0px;
+  }
+
+  .main-panel{
+  	flex-flow: row;
+  	width: auto;
+  }
+
+  .main-panel button {
+  	width: 125px;
+  	max-height: 40px ;
+  	margin: 40px auto;
+  }
+
+  .main-panel .rotary-knob{
+  	margin-right: 10px;
+  }
+
+  .second-panel{
+  	flex-flow: row;
+  }
+
+  .osc-panel{
+  	flex-grow: 1;
+  	min-height: 160px;
+  	justify-content: center;
+  	margin-right: 10px;
+  }
+
+  .osc-panel h5{
+  	margin-top: 50px;
+  	font-size: 12pt;
+  }
+
+  .osc-dec-inc{
+     	width: 90%;
+     	margin-left: 5%;
+     	margin-bottom: 10px;
+     }
+
+  .osc-dec-inc button {
+     	width: 100%;
+  }
+
+  .osc-num{
+  	width: 90%;
+  }
+
+  .sine-panel{
+  	min-width: auto;
+  	max-width: auto;
+  	justify-content: center;
+  	order: 2;
+  }
+
+  .sine-panel svg{
+  	display: block;
+  	margin-left: auto;
+  	margin-right: auto;
+  	align-self: center;
+  	max-width: 100%;
+  }
+
+  .wave-panel{
+  	width: auto;
+  }
+
+}
 
 
 
