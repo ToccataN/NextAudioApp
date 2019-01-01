@@ -8,7 +8,7 @@ const LFOStyle = {
 }
 
 const LFORotaryStyle ={
-	width: 30
+	width: 40
 }
 
 class LfoPanel extends React.Component{

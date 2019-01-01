@@ -3,8 +3,8 @@ import Rotary from '../Rotary'
 import '../../assets/main.css'
 
 const WaveRotaryStyle ={
-	width: 20,
-	height: 25
+	width: 30,
+	height: 30
 }
 
 class WavePanel extends React.Component{
