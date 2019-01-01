@@ -1,6 +1,7 @@
 import Header from './Header'
 import AudioEngine from './AudioEngine'
 import React from 'react'
+import Helmet from 'react-helmet';
 import MainPanel from './panels/MainPanel'
 import Oscillator from './panels/Oscillator'
 import LfoPanel from './panels/LfoPanel'
@@ -22,7 +23,9 @@ class MainLayout extends React.Component{
    if(!this.props.keyOn){
    	return(
       <div >
-        <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+        <Helmet>
+          <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+        </Helmet>
         <Header /> 
         <div className={"main-layout"}>         
           <MainPanel keyToggle={this.props.keyToggle} changeMasterGain={this.props.changeMasterGain} 
@@ -43,6 +46,9 @@ class MainLayout extends React.Component{
    }else {
    	return(
       <div >
+        <Helmet>
+          <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+        </Helmet>
         <Header /> 
         <div className={"main-layout"}>         
           <AudioEngine lfo={this.props.LFObj} gain={this.props.masterGain} freq={this.props.masterFreq} oscArray={this.props.oscArray} 
