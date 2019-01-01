@@ -22,7 +22,7 @@ class MainLayout extends React.Component{
    if(!this.props.keyOn){
    	return(
       <div >
-        <meta name="viewport" content="width=device-width,initial-scale=1.0">
+        <meta name="viewport" content="width=device-width,initial-scale=1.0" />
         <Header /> 
         <div className={"main-layout"}>         
           <MainPanel keyToggle={this.props.keyToggle} changeMasterGain={this.props.changeMasterGain} 
