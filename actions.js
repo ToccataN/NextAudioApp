@@ -43,3 +43,16 @@ export const changePhase = (value) =>{
 		value
 	}
 }
+
+export const playNote = (e) =>{
+    return {
+        type: actionType.PLAY_NOTE,
+        value: e.target.value
+    }
+}
+
+export const stopNote = () =>{
+    return {
+        type: actionType.STOP_NOTE
+    }
+}

@@ -7,15 +7,13 @@ import Oscillator from './panels/Oscillator'
 import LfoPanel from './panels/LfoPanel'
 import WavePanel from './panels/WavePanel'
 import SinePanel from './panels/SinePanel'
+import KeyboardPanel from './panels/KeyboardPanel'
 
 
 class MainLayout extends React.Component{
 
   constructor(props){
   	super(props);
-  	this.state ={
-  		
-  	}
 
   }
 
@@ -40,7 +38,8 @@ class MainLayout extends React.Component{
             <SinePanel xData={this.props.masterFreq} yData={this.props.masterGain} oscs={this.props.oscArray} />
             <WavePanel phase={this.props.phase} changePhase={this.props.changePhase} />
           </div>
-         </div>     
+         </div>
+          <KeyboardPanel playNote={this.props.playNote} stopNote={this.props.stopNote} />
       </div>
      )
    }else {
@@ -65,7 +64,8 @@ class MainLayout extends React.Component{
             <SinePanel xData={this.props.masterFreq} yData={this.props.masterGain} oscs={this.props.oscArray} />
             <WavePanel phase={this.props.phase} changePhase={this.props.changePhase} />
           </div>
-         </div>   
+         </div>
+          <KeyboardPanel playNote={this.props.playNote} stopNote={this.props.stopNote} />
       </div>     
   	)
    }

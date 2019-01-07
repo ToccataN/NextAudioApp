@@ -1,6 +1,6 @@
 import MainLayout from '../components/MainLayout'
 import { Provider, connect } from 'react-redux'
-import { store, toggleKey } from '../store.js'
+import { store } from '../store.js'
 import * as actions from '../actions'
 import '../assets/main.css'
 
@@ -8,7 +8,6 @@ const Index = (props) =>(
     <Provider store={store}>
       <IndexContainer />
     </Provider>
-
 )
 
 function mapStateToProps (state) {
@@ -38,8 +37,13 @@ const mapDispatchToProps = (dispatch) => {
     },
     changePhase: (value) => {
     	dispatch(actions.changePhase(value));
-    }
-
+    },
+    playNote: (value) => {
+  	    dispatch(actions.playNote(value));
+    },
+      stopNote: (value) => {
+          dispatch(actions.stopNote(value));
+      }
   }
   
 }

@@ -23,8 +23,9 @@ export const actionType = {
   ADD_OSC: 'ADD_OSC',
   SUB_OSC: 'SUB_OSC',
   CHANGE_LFO: 'CHANGE_LFO',
-  CHANGE_PHASE: 'CHANGE_PHASE'
-
+  CHANGE_PHASE: 'CHANGE_PHASE',
+	PLAY_NOTE: 'PLAY_NOTE',
+	STOP_NOTE: 'STOP_NOTE'
 }
 
 export const reducer = (state = initialState, action) =>{
@@ -33,6 +34,15 @@ export const reducer = (state = initialState, action) =>{
 		  return Object.assign({}, state, {
 		  	keyOn: !state.keyOn
 		  });
+        case actionType.PLAY_NOTE:
+            return Object.assign({}, state, {
+                keyOn: true,
+                masterFreq: action.value
+            });
+        case actionType.STOP_NOTE:
+            return Object.assign({}, state, {
+                keyOn: false
+            });
 		case actionType.CHANGE_GAIN:
 		  return Object.assign({}, state, {
 		  	masterGain: action.value
