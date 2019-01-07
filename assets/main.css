@@ -277,7 +277,21 @@ i {
 }
 
 
-
+.keyboard-panel {
+  display: flex;
+  flex-flow: row;
+}
+.ui-panel button.key {
+  display: flex;
+  background: #EEE;
+  color: #111;
+  flex-grow: 1;
+}
+.ui-panel button.key.sharp {
+  background: #111;
+  color: #EEE;
+  flex-grow: .5;
+}
 
 
 
