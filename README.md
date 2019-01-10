@@ -9,3 +9,4 @@
 
  ###### Jan. 1, 2019 - Added graphical representation for harmonic oscillators. Also adpated for use with mobile. Added React-Helmet to provide meta-tag support.
 
+ ###### Jan. 8, 2019 - Have integrated a graphical keyboard to the development build. (thanks Scott!).
